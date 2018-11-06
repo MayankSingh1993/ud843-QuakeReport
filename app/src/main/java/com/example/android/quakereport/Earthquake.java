@@ -7,11 +7,25 @@ public class Earthquake {
 
     private String magnitude;
     private String location;
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
     private String time;
+
 
     public Earthquake(String magnitude, String location, String time) {
         this.magnitude = magnitude;
         this.location = location;
+        this.time = time;
+    }
+
+    public Earthquake(String magnitude, String location, String date, String time) {
+        this.magnitude = magnitude;
+        this.location = location;
+        this.date=date;
         this.time = time;
     }
 
