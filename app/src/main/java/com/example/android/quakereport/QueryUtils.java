@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,9 +59,32 @@ public final class QueryUtils {
                 //Get “properties” JSONObject
                 JSONObject properties = currentEarthquake.getJSONObject("properties");
 //              Extract “mag” for magnitude
-                String mag = properties.getString("mag");
+                double mag = properties.getDouble("mag");
 //              Extract “place” for location
+                DecimalFormat formatter = new DecimalFormat("0.0");
+                String magnitude = formatter.format(mag);
+
                 String loc = properties.getString("place");
+                String  primaryLocation;
+                String locationOffset;
+                if(loc.contains("of"))
+                {
+                    String[] splittedLoc= loc.split("of");
+
+                    locationOffset = splittedLoc[0]+"of";
+
+                    primaryLocation = splittedLoc[1];
+
+
+                }
+                else{
+                    locationOffset="near the";
+                     primaryLocation=loc;
+
+                }
+
+
+
 //              Extract “time” for time
 //              String time =properties.getString("time");
 //              long timeInMilis=Long.parseLong(time);
@@ -75,7 +99,7 @@ public final class QueryUtils {
                 String formattedTime = formatTime(dateObject);
 
 //              Create Earthquake java object from magnitude, location, and time
-                Earthquake earthquake = new Earthquake(mag, loc, formattedDate,formattedTime);
+                Earthquake earthquake = new Earthquake(magnitude, locationOffset,primaryLocation, formattedDate,formattedTime);
 //              Add earthquake to list of earthquakes
                 earthquakes.add(earthquake);
 
@@ -95,14 +119,15 @@ public final class QueryUtils {
     }
 
     private static String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("LLL DD, yyyy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
         String timeToDisplay = timeFormat.format(dateObject);
         return timeToDisplay;
     }
 
 
     private static String formatDate(Date dateObject) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("h:mm a");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL DD, yyyy");
         String dateToDisplay = dateFormat.format(dateObject);
         return dateToDisplay;
     }

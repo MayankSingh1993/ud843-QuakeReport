@@ -6,38 +6,42 @@ package com.example.android.quakereport;
 public class Earthquake {
 
     private String magnitude;
-    private String location;
+    private String locationOffset;
+    private String  primaryLocation;
+
+
+
     private String date;
-
-    public String getDate() {
-        return date;
-    }
-
     private String time;
 
+    public Earthquake(String mag, String locationOffset, String primaryLocation, String date, String time) {
 
-    public Earthquake(String magnitude, String location, String time) {
-        this.magnitude = magnitude;
-        this.location = location;
-        this.time = time;
-    }
-
-    public Earthquake(String magnitude, String location, String date, String time) {
-        this.magnitude = magnitude;
-        this.location = location;
+        this.magnitude = mag;
+       this.locationOffset=locationOffset;
+       this.primaryLocation=primaryLocation;
         this.date=date;
         this.time = time;
     }
 
 
+
+
+
     public String getMagnitude() {
         return magnitude;
     }
-
-    public String getLocation() {
-        return location;
+    public String getDate() {
+        return date;
     }
 
+
+    public String getLocationOffset() {
+        return locationOffset;
+    }
+
+    public String getPrimaryLocation() {
+        return primaryLocation;
+    }
     public String getTime() {
         return time;
     }

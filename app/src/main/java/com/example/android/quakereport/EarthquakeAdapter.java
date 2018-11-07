@@ -50,10 +50,16 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
 
 
-        TextView locTextView = (TextView) listItemView.findViewById(R.id.loc);
+        TextView locOffsetTextView = (TextView) listItemView.findViewById(R.id.loc_offset);
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
-        locTextView.setText(earthquake.getLocation());
+        locOffsetTextView.setText(earthquake.getLocationOffset());
+
+        TextView primaryLocTextView = (TextView) listItemView.findViewById(R.id.Primary_loc);
+        // Get the version name from the current AndroidFlavor object and
+        // set this text on the name TextView
+        primaryLocTextView.setText(earthquake.getPrimaryLocation());
+
 
 
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.date);
