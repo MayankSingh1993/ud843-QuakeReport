@@ -103,9 +103,10 @@ public final class QueryUtils {
                 // Format the time string (i.e. "4:30PM")
 
                 String formattedTime = formatTime(dateObject);
-
+                // Extract the value for the key called "url"
+                String url = properties.getString("url");
 //              Create Earthquake java object from magnitude, location, and time
-                Earthquake earthquake = new Earthquake(magnitude, locationOffset,primaryLocation, formattedDate,formattedTime);
+                Earthquake earthquake = new Earthquake(magnitude, locationOffset,primaryLocation, formattedDate,formattedTime,url);
 //              Add earthquake to list of earthquakes
                 earthquakes.add(earthquake);
 
