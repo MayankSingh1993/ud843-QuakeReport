@@ -1,6 +1,8 @@
 package com.example.android.quakereport;
 
 import android.app.Activity;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,19 +45,29 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
         Earthquake earthquake = getItem(position);
 
-        TextView magTextView = (TextView) listItemView.findViewById(R.id.mag);
+        TextView magTextView = (TextView) listItemView.findViewById(R.id.magnitude);
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
         magTextView.setText(earthquake.getMagnitude());
+        // Set the proper background color on the magnitude circle.
+        // Fetch the background from the TextView, which is a GradientDrawable.
+        GradientDrawable magnitudeCircle = (GradientDrawable) magTextView.getBackground();
+
+        // Get the appropriate background color based on the current earthquake magnitude
+        int magnitudeColor = getMagnitudeColor(earthquake.getMagnitude());
+
+        // Set the color on the magnitude circle
+        magnitudeCircle.setColor(magnitudeColor);
 
 
 
-        TextView locOffsetTextView = (TextView) listItemView.findViewById(R.id.loc_offset);
+
+        TextView locOffsetTextView = (TextView) listItemView.findViewById(R.id.location_offset);
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
         locOffsetTextView.setText(earthquake.getLocationOffset());
 
-        TextView primaryLocTextView = (TextView) listItemView.findViewById(R.id.Primary_loc);
+        TextView primaryLocTextView = (TextView) listItemView.findViewById(R.id.primary_location);
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
         primaryLocTextView.setText(earthquake.getPrimaryLocation());
@@ -76,5 +88,44 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
             // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView
         return listItemView;
+    }
+
+    private int getMagnitudeColor(String magnitude) {
+        int magnitudeColorResourceId;
+        int magnitudeFloor = (int) Math.floor(Double.parseDouble(magnitude));
+        switch (magnitudeFloor) {
+            case 0:
+            case 1:
+                magnitudeColorResourceId = R.color.magnitude1;
+                break;
+            case 2:
+                magnitudeColorResourceId = R.color.magnitude2;
+                break;
+            case 3:
+                magnitudeColorResourceId = R.color.magnitude3;
+                break;
+            case 4:
+                magnitudeColorResourceId = R.color.magnitude4;
+                break;
+            case 5:
+                magnitudeColorResourceId = R.color.magnitude5;
+                break;
+            case 6:
+                magnitudeColorResourceId = R.color.magnitude6;
+                break;
+            case 7:
+                magnitudeColorResourceId = R.color.magnitude7;
+                break;
+            case 8:
+                magnitudeColorResourceId = R.color.magnitude8;
+                break;
+            case 9:
+                magnitudeColorResourceId = R.color.magnitude9;
+                break;
+            default:
+                magnitudeColorResourceId = R.color.magnitude10plus;
+                break;
+        }
+        return ContextCompat.getColor(getContext(), magnitudeColorResourceId);
     }
 }
