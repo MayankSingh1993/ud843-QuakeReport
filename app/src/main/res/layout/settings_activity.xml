@@ -11,15 +11,12 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!-- Layout for our Settings Activity, containing a Preference Fragment -->
+<fragment
+    android:name="com.example.android.quakereport.SettingsActivity$EarthquakePreferenceFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.android.quakereport.EarthquakeActivity">
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/settings_menu_item"
-        
-        android:orderInCategory="1"
-        app:showAsAction="ifRoom" />
-</menu>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.android.quakereport.SettingsActivity">
+</fragment>

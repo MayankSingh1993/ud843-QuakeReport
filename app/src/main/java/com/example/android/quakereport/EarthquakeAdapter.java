@@ -18,10 +18,10 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
     private static final String LOG_TAG = EarthquakeAdapter.class.getSimpleName();
 
-    private int resourceId;
-    public EarthquakeAdapter(Activity context, int resourceId, ArrayList<Earthquake> earthquakes) {
+
+    public EarthquakeAdapter(Activity context, ArrayList<Earthquake> earthquakes) {
         super(context, 0, earthquakes);
-        this.resourceId=resourceId;
+
     }
 
     /**

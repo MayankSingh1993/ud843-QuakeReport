@@ -12,14 +12,14 @@
      limitations under the License.
 -->
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.android.quakereport.EarthquakeActivity">
-    <item
-        android:id="@+id/action_settings"
-        android:title="@string/settings_menu_item"
-        
-        android:orderInCategory="1"
-        app:showAsAction="ifRoom" />
-</menu>
+<resources>
+    <string-array name="settings_order_by_labels">
+        <item>@string/settings_order_by_magnitude_label</item>
+        <item>@string/settings_order_by_most_recent_label</item>
+    </string-array>
+
+    <string-array name="settings_order_by_values">
+        <item>@string/settings_order_by_magnitude_value</item>
+        <item>@string/settings_order_by_most_recent_value</item>
+    </string-array>
+</resources>

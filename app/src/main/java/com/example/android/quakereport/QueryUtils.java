@@ -75,24 +75,21 @@ public final class QueryUtils {
                 String magnitude = formatter.format(mag);
 
                 String loc = properties.getString("place");
-                String  primaryLocation;
+                String primaryLocation;
                 String locationOffset;
-                if(loc.contains("of"))
-                {
-                    String[] splittedLoc= loc.split("of");
+                if (loc.contains("of")) {
+                    String[] splittedLoc = loc.split("of");
 
-                    locationOffset = splittedLoc[0]+"of";
+                    locationOffset = splittedLoc[0] + "of";
 
                     primaryLocation = splittedLoc[1];
 
 
-                }
-                else{
-                    locationOffset="near the";
-                     primaryLocation=loc;
+                } else {
+                    locationOffset = "near the";
+                    primaryLocation = loc;
 
                 }
-
 
 
 //              Extract “time” for time
@@ -110,7 +107,7 @@ public final class QueryUtils {
                 // Extract the value for the key called "url"
                 String url = properties.getString("url");
 //              Create Earthquake java object from magnitude, location, and time
-                Earthquake earthquake = new Earthquake(magnitude, locationOffset,primaryLocation, formattedDate,formattedTime,url);
+                Earthquake earthquake = new Earthquake(magnitude, locationOffset, primaryLocation, formattedDate, formattedTime, url);
 //              Add earthquake to list of earthquakes
                 earthquakes.add(earthquake);
 
@@ -138,7 +135,7 @@ public final class QueryUtils {
 
     private static String formatDate(Date dateObject) {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL DD, yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
         String dateToDisplay = dateFormat.format(dateObject);
         return dateToDisplay;
     }
@@ -155,6 +152,7 @@ public final class QueryUtils {
         }
         return url;
     }
+
     /**
      * Make an HTTP request to the given URL and return a String as the response.
      */
@@ -216,14 +214,15 @@ public final class QueryUtils {
         }
         return output.toString();
     }
+
     /**
      * Query the USGS dataset and return a list of {@link Earthquake} objects.
      */
 
     public static List<Earthquake> fetchEarthquakeData(String requestUrl) {
-        Log.i(LOG_TAG,"fetchEarthquakeData is called");
+        Log.i(LOG_TAG, "fetchEarthquakeData is called");
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
