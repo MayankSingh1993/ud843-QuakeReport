@@ -7,7 +7,7 @@ public class Earthquake {
 
     private String magnitude;
     private String locationOffset;
-    private String  primaryLocation;
+    private String primaryLocation;
     private String url;
 
 
@@ -22,8 +22,8 @@ public class Earthquake {
     public Earthquake(String mag, String locationOffset, String primaryLocation, String date, String time, String url) {
 
         this.magnitude = mag;
-       this.locationOffset=locationOffset;
-       this.primaryLocation=primaryLocation;
+        this.locationOffset=locationOffset;
+        this.primaryLocation=primaryLocation;
         this.date=date;
         this.time = time;
         this.url=url;
